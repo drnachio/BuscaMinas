@@ -22,7 +22,7 @@ export default ({ style, cell }: CellProps): JSX.Element => {
   };
 
   let content = '';
-  let className = 'isClosed';
+  let className = ' isClosed';
 
   const onClick = (): void => {
     openCell(cell);
@@ -35,10 +35,10 @@ export default ({ style, cell }: CellProps): JSX.Element => {
 
   if (isOpen) {
     if (isMine) {
-      className= 'mine';
+      className= ' mine';
     } else {
       content = collidingMines ? collidingMines.toLocaleString() : '';
-      className = 'active';
+      className = ' active';
       if (content) {
         className += ' number';
       }
@@ -51,7 +51,7 @@ export default ({ style, cell }: CellProps): JSX.Element => {
   } 
 
   return (
-    <div className={`box ${className}`} onContextMenu={onFlag} onClick={onClick} style={currentStyle}>
+    <div className={`box${className}`} onContextMenu={onFlag} onClick={onClick} style={currentStyle}>
       <span>
         {content}
       </span>
