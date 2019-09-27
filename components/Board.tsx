@@ -23,7 +23,6 @@ export default (): JSX.Element => {
       position: 'absolute',
       width: side / settings.width,
       height: side / settings.height,
-      border: 'solid 1px black',
       left: (side / settings.width) * cell.x,
       top: (side / settings.height) * cell.y,
       zIndex: cell.x * settings.height + cell.y,
