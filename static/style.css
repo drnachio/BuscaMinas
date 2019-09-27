@@ -11,7 +11,9 @@ body {
   background-color: #333;
 }
 
-
+.box {
+  border: solid 1px white;
+}
 .isOpened {
   background-color: #4fa;
 }
@@ -20,4 +22,8 @@ body {
   text-align: center;
   color: black;
   background-color: blue;
+}
+
+.flag {
+  background-color: yellow;
 }

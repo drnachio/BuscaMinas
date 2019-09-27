@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
+import React, { useState } from 'react';
 import { Cell, GetCellInfo } from '../model/types';
 import useCellState from '../hooks/useCellState';
 import { openCell } from '../model/board';
@@ -12,6 +12,7 @@ interface CellProps {
 
 export default ({ style, cell }: CellProps): JSX.Element => {
   const cellState = useCellState(cell);
+  const [flagged, setFlagged] = useState<boolean>(false);
   const isOpen = cellState & GetCellInfo.opened;
   const isMine = cellState & GetCellInfo.isMine;
   const collidingMines = cellState & GetCellInfo.mineNum;
@@ -26,6 +27,11 @@ export default ({ style, cell }: CellProps): JSX.Element => {
   const onClick = (): void => {
     openCell(cell);
   };
+  
+  const onFlag = (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
+    event.preventDefault();
+    setFlagged(!flagged);
+  };
 
   if (isOpen) {
     if (isMine) {
@@ -39,10 +45,13 @@ export default ({ style, cell }: CellProps): JSX.Element => {
     }
   } else {
     currentStyle.cursor = 'pointer';
-  }
+    if (flagged) {
+      className += ' flag';
+    }
+  } 
 
   return (
-    <div className={`box ${className}`} onClick={onClick} style={currentStyle}>
+    <div className={`box ${className}`} onContextMenu={onFlag} onClick={onClick} style={currentStyle}>
       {content}
     </div>
   );

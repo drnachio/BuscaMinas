@@ -44,10 +44,6 @@ const clearBoard = (): void => {
   })
 }
 
-if (global) {
-  global["clearBoard"] = clearBoard;
-}
-
 export const getNextCells = (cell: Cell): Cell[] => {
   const result = new Array<Cell>();
   for (
