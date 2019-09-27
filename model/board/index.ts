@@ -7,19 +7,19 @@ const allCells = new Array<Cell>();
 
 const getInitialBoard = (): Board => {
   const result = new Array<Cell[]>();
-  for (let y=0; y < setting.height; y++) {
+  for (let y = 0; y < setting.height; y++) {
     const row = new Array<Cell>();
-    for (let x=0; x < setting.width; x++) {
+    for (let x = 0; x < setting.width; x++) {
       const cell = {
         state: CellState.empty,
         x,
         y,
         stateChangedHandlers: new Array<SetCellState>(),
-      }
+      };
       row.push(cell);
       allCells.push(cell);
     }
-    result.push(row);    
+    result.push(row);
   }
   return result;
 };
@@ -37,12 +37,11 @@ export const setCellState = (cell: Cell, state: CellState): void => {
   });
 };
 
-
 const clearBoard = (): void => {
   allCells.forEach((cell): void => {
     setCellState(cell, CellState.empty);
-  })
-}
+  });
+};
 
 export const getNextCellsCross = (cell: Cell): Cell[] => {
   const result = new Array<Cell>();
@@ -56,13 +55,13 @@ export const getNextCellsCross = (cell: Cell): Cell[] => {
       x < Math.min(cell.x + 2, setting.width);
       x++
     ) {
-      if(x === cell.x || y === cell.y) {
+      if (x === cell.x || y === cell.y) {
         result.push(currentBoard[y][x]);
       }
     }
   }
   return result;
-}
+};
 
 export const getNextCells = (cell: Cell): Cell[] => {
   const result = new Array<Cell>();
@@ -80,20 +79,7 @@ export const getNextCells = (cell: Cell): Cell[] => {
     }
   }
   return result;
-}
-
-export const openCell = (cell: Cell): void => {
-  if (!(cell.state & GetCellInfo.opened)) {
-    setCellState(cell, cell.state | GetCellInfo.opened);
-    if ((cell.state & GetCellInfo.mineNum) === 0) {
-      setTimeout(() => {
-        getNextCellsCross(cell).forEach((nextCell): void=> {
-          openCell(nextCell);
-        });
-      }, 100);
-    }
-  }
-}
+};
 
 const addNines = (): void => {
   const cellsWithMine = allCells
@@ -106,11 +92,28 @@ const addNines = (): void => {
       colindan.state += 1;
     });
   });
-}
+};
 
 export const resetBoard = (): void => {
   clearBoard();
   addNines();
-}
+};
+
+export const openCell = (cell: Cell): void => {
+  if (!(cell.state & GetCellInfo.opened)) {
+    setCellState(cell, cell.state | GetCellInfo.opened);
+    if (cell.state & GetCellInfo.isMine) {
+      setTimeout(() => {
+        resetBoard();
+      }, 1000);
+    } else if ((cell.state & GetCellInfo.mineNum) === 0) {
+        setTimeout(() => {
+          getNextCellsCross(cell).forEach((nextCell): void => {
+            openCell(nextCell);
+          });
+        }, 100);
+      }
+  }
+};
 
 resetBoard();
