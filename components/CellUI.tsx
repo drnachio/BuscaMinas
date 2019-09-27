@@ -52,7 +52,9 @@ export default ({ style, cell }: CellProps): JSX.Element => {
 
   return (
     <div className={`box ${className}`} onContextMenu={onFlag} onClick={onClick} style={currentStyle}>
-      {content}
+      <span>
+        {content}
+      </span>
     </div>
   );
 };
