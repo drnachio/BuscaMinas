@@ -3,6 +3,8 @@
 import { Board, Cell, CellState, SetCellState, GetCellInfo } from '../types';
 import setting from '../../settings';
 
+let isEnabled = true;
+
 const allCells = new Array<Cell>();
 
 const getInitialBoard = (): Board => {
@@ -28,6 +30,8 @@ const currentBoard = getInitialBoard();
 
 export const getBoard = (): Board => currentBoard;
 
+export const getIsEnabled = (): boolean => isEnabled;
+
 export const getAllCells = (): Cell[] => allCells;
 
 export const setCellState = (cell: Cell, state: CellState): void => {
@@ -36,6 +40,7 @@ export const setCellState = (cell: Cell, state: CellState): void => {
     handler(state);
   });
 };
+
 
 const clearBoard = (): void => {
   allCells.forEach((cell): void => {
@@ -97,12 +102,14 @@ const addNines = (): void => {
 export const resetBoard = (): void => {
   clearBoard();
   addNines();
+  isEnabled = true;
 };
 
 export const openCell = (cell: Cell): void => {
   if (!(cell.state & GetCellInfo.opened)) {
     setCellState(cell, cell.state | GetCellInfo.opened);
     if (cell.state & GetCellInfo.isMine) {
+      isEnabled = false;
       setTimeout(() => {
         resetBoard();
       }, 1000);
