@@ -32,7 +32,7 @@ export default ({ style, cell }: CellProps): JSX.Element => {
   
   const onFlag = (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
     event.preventDefault();
-    setCellState(cell, cellState | CellState.flagged);
+    setCellState(cell, cellState ^ CellState.flagged);
   };
 
   if (isOpen) {
