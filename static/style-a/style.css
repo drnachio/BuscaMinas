@@ -80,13 +80,13 @@ body {
 
 .flag:before {
   content: '';
-  width: 55%;
+  width: 50%;
   height: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
-  background-image: url(../img/flag.svg);
+  background-image: url(../img/flag2.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
