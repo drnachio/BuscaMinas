@@ -38,7 +38,7 @@ export default ({ style, cell }: CellProps): JSX.Element => {
       className= 'mine';
     } else {
       content = collidingMines ? collidingMines.toLocaleString() : '';
-      className = 'isOpened';
+      className = 'active';
       if (content) {
         className += ' number';
       }
