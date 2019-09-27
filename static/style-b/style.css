@@ -45,6 +45,20 @@ body {
   height: 100%;
   box-shadow: 0px 5px 0px 0px #403a3d;
 }
+.box:not(.active):before {
+  content: '';
+  width: 50%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  background-image: url(../img/bg.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.75;
+}
 
 .box.mine::after {
   background-color: #f84e00;
