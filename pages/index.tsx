@@ -10,7 +10,7 @@ export default (): JSX.Element => (
       <title>Buscaminas</title>
       <link rel="stylesheet" type="text/css" href="/static/style.css" />
     </Head>
-    <button onClick={resetBoard} type="button" className="reset">Resetear</button>
+    <button onClick={resetBoard} type="button" className="reset">Reiniciar</button>
     <Board />
   </React.Fragment>
 );
