@@ -25,7 +25,7 @@ export default ({ style, cell }: CellProps): JSX.Element => {
   let className = ' isClosed';
 
   const onClick = (): void => {
-    if(getIsEnabled()) {
+    if(getIsEnabled() && !(cellState & GetCellInfo.flagged)) {
       openCell(cell);
     }
   };
