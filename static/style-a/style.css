@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:900&display=swap');
+
 *{
   margin: 0;
   padding: 0;
@@ -21,6 +23,8 @@
 
 body {
   background-color: #2b2426;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
 }
 
 .box {
@@ -40,24 +44,30 @@ body {
   height: 100%;
 }
 
+.box.mine::after {
+  background-color: #f84e00;
+}
+
 .mine::before {
   content: '';
   border-radius: 50%;
-  border: 3px solid #2b2426;
+  border: 5px solid #2b2426;
   width: 50%;
   height: 50%;
   position: absolute;
   top: 50%;
-  left: 50;
-  transform: translate(50%, -50%);
-}
-
-.isClosed {
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .box.active::after {
   background-color: #403a3d;
 }
+
+.box.number::after {
+  background-color: #f8ba00;
+}
+
 .number {
   font-size: 20px;
   text-align: center;
