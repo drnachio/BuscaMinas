@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
   margin: 0;
   padding: 0;
@@ -19,16 +20,24 @@
   outline: none;
 }
 
+=======
+>>>>>>> bcf83a45578ccc4daaabbb853dbdb1123daedb04
 body {
   background-color: #2b2426;
 }
 
+<<<<<<< HEAD
 .box {
+=======
+.menu {
+  box-sizing: border-box;
+>>>>>>> bcf83a45578ccc4daaabbb853dbdb1123daedb04
   padding: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+<<<<<<< HEAD
   background-color: #2b2426;
 }
 
@@ -60,4 +69,9 @@ body {
 }
 
 .flag {
+=======
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+>>>>>>> bcf83a45578ccc4daaabbb853dbdb1123daedb04
 }
