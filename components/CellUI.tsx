@@ -18,10 +18,10 @@ export default ({ style, cell }: CellProps): JSX.Element => {
 
   const currentStyle = {
     ...style,
-    color: '#000',
   };
 
   let content = '';
+  let className = 'isClosed';
 
   const onClick = (): void => {
     openCell(cell);
@@ -29,17 +29,20 @@ export default ({ style, cell }: CellProps): JSX.Element => {
 
   if (isOpen) {
     if (isMine) {
-      currentStyle.backgroundColor = '#f32';
+      className= 'mine';
     } else {
       content = collidingMines ? collidingMines.toLocaleString() : '';
-      currentStyle.backgroundColor = '#4fa';
+      className = 'isOpened';
+      if (content) {
+        className += ' number';
+      }
     }
   } else {
     currentStyle.cursor = 'pointer';
   }
 
   return (
-    <div onClick={onClick} style={currentStyle}>
+    <div className={`box ${className}`} onClick={onClick} style={currentStyle}>
       {content}
     </div>
   );

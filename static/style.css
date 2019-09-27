@@ -1,7 +1,23 @@
-div {
-  transition-property: top, left;
-  transition-duration: 0.5s;
-}
+
 body {
-  background-color: #000;
+  background-color: #003;
+}
+
+.mine {
+  background-color: #f32;
+}
+
+.isClosed {
+  background-color: #333;
+}
+
+
+.isOpened {
+  background-color: #4fa;
+}
+.number {
+  font-size: 20px;
+  text-align: center;
+  color: black;
+  background-color: blue;
 }
