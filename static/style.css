@@ -1,6 +1,36 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-collapse: collapse;
+	font-size: 100%;
+	vertical-align: baseline;
+	box-sizing: border-box;
+	outline: none;
+}
+*::before, *::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-collapse: collapse;
+  font-size: 100%;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  outline: none;
+}
+
+
 
 body {
   background-color: #003;
+}
+
+.box {
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mine {
