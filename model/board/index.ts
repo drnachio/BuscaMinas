@@ -116,7 +116,9 @@ export const openCell = (cell: Cell): void => {
     } else if ((cell.state & GetCellInfo.mineNum) === 0) {
         setTimeout(() => {
           getNextCellsCross(cell).forEach((nextCell): void => {
-            openCell(nextCell);
+            if (!(cell.state & GetCellInfo.isMine)) {
+              openCell(nextCell);
+            }
           });
         }, 100);
       }
